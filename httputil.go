@@ -89,8 +89,8 @@ func requestString(method string, urlPath string, secretkey string, params *Orde
 func CallApiServer(httpMethod string, server string, class string, method string, params *OrderedParams, secretkey string, i interface{}) error {
 	reqString := requestString(httpMethod, server+class+method, secretkey, params)
 	h := md5.New()
-	h.Write([]byte(url.QueryEscape(reqString))) // 需要加密的字符串为 sharejs.com
-	signature := hex.EncodeToString(h.Sum(nil)) // 输出加密结果
+	h.Write([]byte(url.QueryEscape(reqString)))
+	signature := hex.EncodeToString(h.Sum(nil))
 	params.Add("sign", signature)
 	result, err := getBody("POST", server+class+method, params)
 	if err == nil {
