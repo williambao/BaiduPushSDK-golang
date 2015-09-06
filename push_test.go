@@ -18,8 +18,8 @@ type PUSHTestSuite struct {
 }
 
 var _ = check.Suite(&PUSHTestSuite{NewClient(
-	"fH5CGHFKliIad9LGE7RwWDLs",
-	"nO29YHEp3RbhizVyVIrAd2MtYIYvxtpp",
+	"Your API Key",
+	"Your Secret Key",
 )})
 
 // 测试查询当前应用的设备统计信息
@@ -31,7 +31,7 @@ func (s *PUSHTestSuite) TestQueryStatisticDevice(c *check.C) {
 // 测试推送消息到单个客户端
 func (s *PUSHTestSuite) TestPushMsgToSingleDevice(c *check.C) {
 	// 构造请求
-	request := &PushMsgToSingleDeviceRequest{ChannelId: "4548209656360317009", MsgType: 0, Message: "测试消息"}
+	request := &PushMsgToSingleDeviceRequest{ChannelId: "your channel_id", MsgType: 0, Message: "测试消息"}
 	// 推送消息到指定客户端
 	_, err := s.client.PushMsgToSingleDevice(*request)
 	c.Assert(err, check.IsNil)
@@ -42,7 +42,7 @@ func (s *PUSHTestSuite) TestPushNotificationToSingleDevice(c *check.C) {
 	// 推送消息到指定客户端
 	notification := AndroidNotification{Title: "测试通知", Description: "测试通知描述", NotificationBuilderId: 0, NotificationBasicStyle: 7, OpenType: 1, Url: "http://www.tsuru.cn"}
 	message, _ := json.Marshal(notification)
-	request := &PushMsgToSingleDeviceRequest{ChannelId: "4548209656360317009", MsgType: 1, Message: string(message)}
+	request := &PushMsgToSingleDeviceRequest{ChannelId: "your channel_id", MsgType: 1, Message: string(message)}
 	_, err := s.client.PushMsgToSingleDevice(*request)
 	c.Assert(err, check.IsNil)
 }

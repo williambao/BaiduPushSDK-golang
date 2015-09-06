@@ -17,9 +17,9 @@ import (
 
 func main() {
 	// 新建客户端
-	client := push.NewClient("fH5CGHFKliIad9LGE7RwWDLs", "nO29YHEp3RbhizVyVIrAd2MtYIYvxtpp")
+	client := push.NewClient("Your API Key","Your Secret Key")
 	// 构造请求
-	request := &push.PushMsgToSingleDeviceRequest{ChannelId: "4548209656360317009", MsgType: 0, Message: "测试消息"}
+	request := &push.PushMsgToSingleDeviceRequest{ChannelId: "your channel_id", MsgType: 0, Message: "测试消息"}
 
 	// 推送消息到指定客户端
 	response, err := client.PushMsgToSingleDevice(*request)
@@ -43,11 +43,11 @@ import (
 
 func main() {
 	// 新建客户端
-	client := push.NewClient("fH5CGHFKliIad9LGE7RwWDLs", "nO29YHEp3RbhizVyVIrAd2MtYIYvxtpp")
+	client := push.NewClient("Your API Key","Your Secret Key")
 	// 推送通知到指定客户端
 	notification := &push.AndroidNotification{Title: "测试通知", Description: "测试通知描述", NotificationBuilderId: 0, NotificationBasicStyle: 7, OpenType: 1, Url: "http://www.tsuru.cn"}
 	message, _ := json.Marshal(notification)
-	request := &push.PushMsgToSingleDeviceRequest{ChannelId: "4548209656360317009", MsgType: 1, Message: string(message)}
+	request := &push.PushMsgToSingleDeviceRequest{ChannelId: "your channel_id", MsgType: 1, Message: string(message)}
 	response, err := client.PushMsgToSingleDevice(*request)
 	if err == nil {
 		fmt.Println(response.MsgId)
