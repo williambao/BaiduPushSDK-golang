@@ -43,8 +43,8 @@ type AndroidNotification struct {
 	Url                    string `json:"url"`                      //需要打开的Url地址，open_type为1时才有效;
 	//open_type为2时才有效，Android端SDK会把pkg_content字符串转换成Android Intent,
 	//通过该Intent打开对应app组件，所以pkg_content字符串格式必须遵循Intent uri格式，最简单的方法可以通过Intent方法toURI()获取
-	PkgContent string `json:"pkg_content"`
-	//CustomContent string `json:"custom_content"` //自定义内容，键值对，Json对象形式(可选)；在android客户端，这些键值对将以Intent中的extra进行传递。
+	PkgContent    string                 `json:"pkg_content"`
+	CustomContent map[string]interface{} `json:"custom_content"` //自定义内容，键值对，Json对象形式(可选)；在android客户端，这些键值对将以Intent中的extra进行传递。
 }
 
 // 推送消息到单台设备
